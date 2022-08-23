@@ -1,0 +1,95 @@
+body {
+    background: linear-gradient(90deg, #4258FF,#808EFF,#808EFF,#4258FF); 
+    background-size: cover;
+    margin: 0;
+    color: #000000;
+    font-family: Roboto, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    color: #000000;
+    font-size: 25px;
+}
+
+.special {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 600;
+}
+header {
+
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    margin-top: 20px
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top:40px
+}
+
+.enter {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 40px
+}
+
+.gain-center {
+    transition: 0.1s; /* Время эффекта */
+    text-align: center;
+}
+
+    .gain-center:hover {
+        transform: scale(1.2); /* Увеличиваем масштаб */
+    }
+
+
+button {
+    border: none;
+    background: #f3f3f3;
+    color: #000000;
+    padding: 10px;
+    border-radius: 17px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 17.5px;
+}
+
+    button:hover {
+        transform: scale(1.2); 
+    }
+
+p {
+    font-family: Roboto, sans-serif;
+    font-size: 16.5px;
+    color: #f3f3f3;
+    padding-right: 8.25px;
+    padding-left: 8.25px;
+}
+
+footer {
+    background: linear-gradient(90deg, #4258FF,#808EFF,#808EFF,#4258FF);
+    height: 200px;
+    margin: 565px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

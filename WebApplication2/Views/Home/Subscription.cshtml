@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplication2.Areas.Identity.Data
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model WebApplication2.Core.ViewModel.EditUserViewModel
+@{
+    ViewData["Title"] = "Subscription Page";
+}
+
+<main>
+
+
+<div class="text-center">
+    <h1 class="display-4">@localizer["SubscriptionSystem"]</h1>
+    <img src="~/css/pic/Donat.jpeg">
+    <br>
+    <a>@localizer["Head"]</a>
+    <br><br>
+    @if (SignInManager.IsSignedIn(User))
+        {
+            <a href="/User/Edit/@UserManager.GetUserId(User)">@localizer["ButtonSubsription"]</a>
+        }
+        else
+        {
+            <a>@localizer["Warning"]</a>
+        }
+    </div>
+
+</main>

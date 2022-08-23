@@ -1,0 +1,24 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model SendMailDto
+@{
+    ViewData["Title"] = "ContactUs Page";
+}
+
+<form method="post">
+    <div class="form-group">
+        <a>@localizer["Name"]</a>
+        <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Enter your name">
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+    </div>
+    <div class="form-group">
+        <a>@localizer["Subject"]</a>
+        <input type="text" asp-for="@Model.Subject" class="form-control" placeholder="Enter your subject">
+        <span class="text-danger" asp-validation-for="@Model.Subject"></span>
+    </div>
+    <div class="form-group">
+        <a>@localizer["Message"]</a>
+        <textarea class="form-control" style="height:100px;" asp-for="@Model.Message" placeholder="Enter your message"></textarea>
+        <span class="text-danger" asp-validation-for="@Model.Message"></span>
+    </div>
+    <button type="submit" class="btn-primary">@localizer["Send"]</button>
+</form>

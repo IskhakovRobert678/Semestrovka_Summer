@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplication2.Areas.Identity.Data
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
+</head>
+<body>
+        <header>
+        <div class="logo">
+        <a style="font-size:60px; font-family:Monotype Corsiva;">SiteBook</a>
+    </div>
+        <div class="menu">
+            <p class="gain-center"> <a asp-area="" asp-controller="Home" asp-action="Index">@localizer["Main"]</a> </p>
+            <p class="gain-center"> <a asp-area="" asp-controller="Book" asp-action="FreeBook">@localizer["FreeBook"]</a> </p>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p class="gain-center"> <a asp-area="" asp-controller="Book" asp-action="DonatBook">@localizer["DonatBook"]</a> </p>
+            }
+
+            <p class="gain-center"> <a asp-area="" asp-controller="Home" asp-action="Subscription" asp-route-id="@UserManager.GetUserId(User)">@localizer["Subscriptions"]</a> </p>
+            <p class="gain-center"> <a asp-area="" asp-controller="Home" asp-action="ContactUs">@localizer["ContactUs"]</a> </p>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p class="gain-center"><a href="/User/Edit/@UserManager.GetUserId(User)">@localizer["Profil"]</a></p>
+            }
+            <li class=nav-link>
+                            <partial name="_Culture"/>
+            </li>
+        </div>
+        <div class="enter">
+            @if (SignInManager.IsSignedIn(User))
+            {
+        <a class="special" style="margin-bottom:20px;" href="/User/Edit/@UserManager.GetUserId(User)">@UserManager.GetUserName(User)</a>
+
+        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit">@localizer["Exit"]</button>
+        </form>
+            }
+            else
+            {
+                <div class="sign_up">
+                    <p class="gain-center">
+                        <a class="special"id="login" asp-area="Identity" asp-page="/Account/Login">@localizer["LogIn"]</a>
+                    </p>
+                </div>
+                <div class="registr" style="margin-left:20px;">
+                    <p class="gain-center">
+                        <a class="special" id="register" asp-area="Identity" asp-page="/Account/Register">@localizer["Registr"]</a>
+                    </p>
+                </div>
+            }
+            
+        </div>
+    </header>
+
+    <hr class="my-4">
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div style=margin-top:200px;>
+            <a>&copy; 2022 - WebApplication2</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
