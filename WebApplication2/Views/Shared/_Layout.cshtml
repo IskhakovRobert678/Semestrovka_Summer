@@ -37,6 +37,7 @@
             <li class=nav-link>
                             <partial name="_Culture"/>
             </li>
+            <div class="gcse-searchbox-only"></div> @*поиск*@
         </div>
         <div class="enter">
             @if (SignInManager.IsSignedIn(User))
@@ -80,6 +81,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script async src="https://cse.google.com/cse.js?cx=a0ac672d559cb48b1"></script>@*поиск*@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
